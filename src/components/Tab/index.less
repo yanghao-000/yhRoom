@@ -1,0 +1,26 @@
+.nav{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 54px;
+  width: 100%;
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+  display: flex;
+  a{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    i{
+      font-size: 20px;
+    }
+    &.active,&:active{
+      color: #2688d7;
+    }
+    span{
+      font-size: 14px;
+    }
+  }
+}
