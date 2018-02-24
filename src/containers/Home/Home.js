@@ -6,9 +6,9 @@ import HomeList from './HomeList'
 import {connect} from 'react-redux'
 import actions from '../../store/actions/home'
 import Loading from "../../components/Loading/Loading";
-import {loadMore} from '../../common/util'
+import {loadMore, pullRefresh} from '../../common/util'
 
-@connect(state=>({...state.home}),actions)
+@connect(state=>({...state.home}),actions)  //把组件和redux连接起来
 export default class Home extends React.Component{
    componentDidMount(){
       // 请求轮播图数据
@@ -20,6 +20,7 @@ export default class Home extends React.Component{
          this.props.getLessonsAPI()
       }
       loadMore(this.ele, this.props.getLessonsAPI)
+      pullRefresh(this.ele, this.props.refreshAPI)
    }
    // 选择当前哪门课程，做筛选用
    selectCurrentLesson = (val)=>{

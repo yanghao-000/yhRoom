@@ -1,12 +1,16 @@
 import * as Types from '../action-types'
 import {getLessons, getSliders} from "../../api/home";
+import {CLEAR_LESSONS} from "../action-types";
 
 let action = {
    // 更新当前选择的课程
    updateCurrentLesson(lesson){
-      return {
-         type: Types.SET_CURRENT_LESSON,
-         lesson: lesson,
+      return function (dispatch, getState) {
+         dispatch({
+            type: Types.SET_CURRENT_LESSON,
+            lesson: lesson,
+         })
+         action.refreshAPI()(dispatch, getState)
       }
    },
    getSlidersAPI(){
@@ -26,6 +30,12 @@ let action = {
          dispatch({type: Types.CHANGE_LOADING_STATUS, status: true})
          //ajax课程列表
          dispatch({type: Types.SET_LESSONS, payload: getLessons(offset, limit, currentLesson)})
+      }
+   },
+   refreshAPI(){
+      return function (dispatch, getState) {
+         dispatch({type: CLEAR_LESSONS}) //派发清空数据
+         action.getLessonsAPI()(dispatch, getState) //获取最新数据
       }
    }
 }

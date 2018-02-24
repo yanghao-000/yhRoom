@@ -1,5 +1,6 @@
 // 一个页面一个reducer
 import * as Types from '../action-types'
+import {CLEAR_LESSONS} from "../action-types";
 let initState = {
    currentLesson: 'all',
    sliders:[],
@@ -41,6 +42,17 @@ function home(state=initState, action) {
                   ...action.payload.list
                ]
             },
+         }
+      case CLEAR_LESSONS:
+         return {
+            ...state,
+            lesson: {
+               ...state.lesson,
+               isLoading: false,
+               offset: 0,
+               list: [],
+               hasMore: true
+            }
          }
    }
    return state

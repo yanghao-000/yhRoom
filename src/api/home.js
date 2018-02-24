@@ -7,3 +7,7 @@ export function getSliders() {
 export function getLessons(offset, limit, type) {
    return axios.get(`/lessons/${offset}/${limit}/${type}`)
 }
+//根据id获取某一门课程
+export function getLesson(id) {
+   return axios.get(`/lesson/${id}`)
+}
