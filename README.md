@@ -18,3 +18,7 @@ yarn add react react-dom redux react-redux react-router-dom axios react-transiti
 - reducer
 - action
 - 组建中调用action
+
+## 运行
+-  项目启动  npm run dev
+-  开服务   node resource\server.js
